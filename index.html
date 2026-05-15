@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nacho García – Cómico</title>
+  <meta name="description" content="La vida de Nacho García suele ser graciosa: nació en Córdoba pero pasó toda su vida en Valladolid... su vida tenía que ser un chiste." />
+  <meta property="og:title" content="Nacho García" />
+  <meta property="og:description" content="Más de quince años haciendo monólogos. Melodía FM, El Club de la Comedia, Sopa de Gansos..." />
+  <meta property="og:image" content="https://www.nachogarciacomico.com/wp-content/uploads/social/nachogarcia.jpg" />
+  <meta property="og:url" content="https://www.nachogarciacomico.com/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --off-white: #f5f2ec;
+      --cream: #ece8df;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --text: #1a1a1a;
+      --muted: #6b6560;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--off-white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(245,242,236,0.7);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-social {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .nav-social a {
+      color: rgba(245,242,236,0.5);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-social a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-image-side {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(20%);
+    }
+    .hero-image-side::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, transparent 60%, var(--off-white) 100%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem 2rem;
+      background: var(--off-white);
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 5vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--black);
+      margin-bottom: 2rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 420px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--gold);
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--black);
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover { background: var(--black); color: var(--off-white); transform: translateY(-2px); }
+
+    /* ── ESPECTACULO HIGHLIGHT ── */
+    .show-banner {
+      background: var(--black);
+      color: var(--off-white);
+      padding: 3.5rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    .show-banner-img {
+      width: 120px;
+      height: 170px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--gold);
+    }
+    .show-banner-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .show-banner-content p {
+      color: rgba(245,242,236,0.65);
+      font-size: 0.95rem;
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 5rem 3rem; }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      color: var(--black);
+    }
+
+    /* ── QUIÉN ES ── */
+    #quien {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      background: var(--cream);
+    }
+
+    .quien-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .quien-photo {
+      position: relative;
+    }
+    .quien-photo img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .quien-photo::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: -12px;
+      right: 12px; bottom: 12px;
+      border: 2px solid var(--gold);
+      z-index: 0;
+    }
+    .quien-photo img { position: relative; z-index: 1; }
+
+    /* ── RADIO ── */
+    #radio {
+      background: var(--black);
+      color: var(--off-white);
+    }
+    #radio .section-title { color: var(--off-white); }
+
+    .radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .radio-text p {
+      color: rgba(245,242,236,0.65);
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    .radio-text .radio-link {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .radio-text .radio-link:hover { opacity: 0.7; }
+
+    .radio-images {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .radio-images img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 240px;
+    }
+
+    /* ── TELEVISIÓN ── */
+    #television {
+      background: var(--off-white);
+    }
+    .tv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 2rem;
+    }
+    .tv-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .tv-list li {
+      padding: 0.75rem 1rem;
+      border-left: 3px solid var(--gold);
+      background: var(--cream);
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: padding-left 0.2s;
+    }
+    .tv-list li:hover { padding-left: 1.5rem; }
+
+    .tv-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .tv-images img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+    }
+
+    /* ── EVENTOS ── */
+    #eventos {
+      background: var(--cream);
+    }
+    .eventos-text {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+    .eventos-photos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .eventos-photos img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      transition: transform 0.3s, filter 0.3s;
+      filter: saturate(0.8);
+    }
+    .eventos-photos img:hover { transform: scale(1.03); filter: saturate(1); }
+
+    /* ── CONTACTO ── */
+    #contacto {
+      background: var(--black);
+      color: var(--off-white);
+      text-align: center;
+    }
+    #contacto .section-title { color: var(--off-white); }
+    #contacto p {
+      color: rgba(245,242,236,0.6);
+      max-width: 480px;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+    }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .social-row a {
+      color: rgba(245,242,236,0.5);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(245,242,236,0.15);
+      padding: 0.5rem 1.25rem;
+      transition: all 0.2s;
+    }
+    .social-row a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      color: rgba(245,242,236,0.3);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image-side { height: 55vw; }
+      .hero-image-side::after { background: linear-gradient(to bottom, transparent 60%, var(--off-white) 100%); }
+      .hero-content { padding: 2rem 1.5rem 3rem; }
+
+      #quien, .radio-grid, .tv-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .quien-photo { order: -1; }
+
+      .eventos-photos { grid-template-columns: 1fr 1fr; }
+      .tv-images { grid-template-columns: 1fr; }
+
+      section { padding: 3rem 1.5rem; }
+      .show-banner { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">Nacho <span>García</span></a>
+    <ul class="nav-links">
+      <li><a href="#quien">Quién es</a></li>
+      <li><a href="#radio">Radio</a></li>
+      <li><a href="#television">TV</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="https://www.facebook.com/nacho.garcia.comedian" target="_blank" rel="noopener">FB</a>
+      <a href="https://twitter.com/NachoGarciaR" target="_blank" rel="noopener">TW</a>
+      <a href="https://www.instagram.com/nachogarciar/" target="_blank" rel="noopener">IG</a>
+      <a href="https://www.youtube.com/channel/UCEts1B6NXf-Xc_TmCCv6dow" target="_blank" rel="noopener">YT</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-image-side">
+      <img
+        src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/cropped-nachogarcia_background01.jpg"
+        alt="Nacho García cómico"
+      />
+    </div>
+    <div class="hero-content fade-in">
+      <span class="hero-label">Monologuista · Radio · Televisión</span>
+      <h1 class="hero-title">Nacho<br /><em>García</em></h1>
+      <p class="hero-bio">
+        Nació en Córdoba, creció en Valladolid, su madre es de Ciudad Real y sus tres hermanos son gallegos.
+        Su vida tenía que ser un chiste — y lleva más de quince años demostrándolo sobre los escenarios.
+      </p>
+      <div class="hero-cta">
+        <a href="#contacto" class="btn-primary">Contactar</a>
+        <a href="#quien" class="btn-outline">Saber más</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPECTÁCULO DESTACADO -->
+  <div class="show-banner fade-in">
+    <img
+      class="show-banner-img"
+      src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/7ca76974-f5e5-4bde-8eae-dde6ab73575a-210x300.jpg"
+      alt="Espectáculo Estoy Mayor"
+    />
+    <div class="show-banner-content">
+      <h2>Estoy Mayor</h2>
+      <p>
+        Su último espectáculo. Una celebración del tiempo que pasa, de las cosas que cambian
+        y de las que no deberían haber cambiado nunca. Humor reconocible, honesto y sin filtro.
+      </p>
+      <a href="https://www.nachogarciacomico.com/espectaculos/" class="btn-primary" target="_blank" rel="noopener">
+        Ver espectáculos
+      </a>
+    </div>
+  </div>
+
+  <!-- QUIÉN ES -->
+  <section id="quien">
+    <div class="quien-text fade-in">
+      <span class="section-label">Biografía</span>
+      <h2 class="section-title">Quién es<br />Nacho García</h2>
+      <p>
+        Empezó en los bares y nunca los dejó, pero fue añadiendo más cosas: salas, teatros, televisión, radio…
+        Más de quince años encima de los escenarios haciendo lo que mejor se le da: hacer reír a la gente.
+      </p>
+      <p>
+        Forma parte del equipo de Nuria Roca en el morning show
+        <strong>Lo Mejor Que Te Puede Pasar</strong> en Melodía FM,
+        donde combaten el sueño de lunes a viernes de 6 a 10 de la mañana.
+      </p>
+      <p>
+        Si después de oír su voz quieres dar un paso más en tu relación y verlo de cuerpo entero,
+        puedes hacerlo en programas como <strong>El Club De La Comedia</strong> (La Sexta)
+        o <strong>Sopa de Gansos</strong> (Cuatro).
+      </p>
+    </div>
+    <div class="quien-photo fade-in">
+      <img
+        src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/nachogarcia_presentacion3.jpg"
+        alt="Nacho García presentación"
+      />
+    </div>
+  </section>
+
+  <!-- RADIO -->
+  <section id="radio">
+    <span class="section-label">Radio</span>
+    <h2 class="section-title">Melodía FM</h2>
+    <div class="radio-grid">
+      <div class="radio-text fade-in">
+        <p>
+          <strong style="color:var(--gold-light)">Lo Mejor Que Te Puede Pasar</strong> es el morning show
+          de éxito que puedes escuchar en Melodía FM todos los días de 6 a 10 de la mañana.
+        </p>
+        <p>
+          Nuria Roca y su equipo — Juan Del Val, Bernat Barrachina, Sara Ramos y Nacho García —
+          tienen un propósito: que arranques el día con una buena dosis de actualidad, humor y buena música.
+        </p>
+        <a href="http://www.melodia-fm.com/lo-mejor/" target="_blank" rel="noopener" class="radio-link">
+          Escuchar en Melodía FM →
+        </a>
+      </div>
+      <div class="radio-images fade-in">
+        <img
+          src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/RADIO4.jpg"
+          alt="En el estudio de radio"
+        />
+        <img
+          src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/RADIO3.jpg"
+          alt="Programa de radio"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- TELEVISIÓN -->
+  <section id="television">
+    <span class="section-label">Televisión</span>
+    <h2 class="section-title">En pantalla</h2>
+    <div class="tv-grid">
+      <div class="fade-in">
+        <p style="color:var(--muted); margin-bottom:1.5rem; font-size:1rem;">
+          Monologuista, colaborador, guionista, reportero… delante y detrás de la cámara,
+          Nacho García ha participado en:
+        </p>
+        <ul class="tv-list">
+          <li>El Club De La Comedia — La Sexta</li>
+          <li>Sopa De Gansos — Cuatro y FDF</li>
+          <li>Otra movida — Neox</li>
+          <li>Caiga Quien Caiga — Cuatro</li>
+          <li>Guerra de Sesos — Telecinco</li>
+          <li>Visto y Oído — Cuatro</li>
+          <li>Chic Cas — Paramount Comedy</li>
+          <li>Corto y Cambio — Paramount Comedy</li>
+        </ul>
+      </div>
+      <div class="tv-images fade-in">
+        <img
+          src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/nacho_television01.jpg"
+          alt="Nacho García en televisión"
+        />
+        <img
+          src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/television2.jpg"
+          alt="Nacho García en televisión"
+        />
+        <img
+          src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/nacho_television02.jpg"
+          alt="Nacho García en televisión"
+          style="grid-column: span 2;"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTOS -->
+  <section id="eventos">
+    <span class="section-label">Eventos privados</span>
+    <h2 class="section-title">Tu evento,<br />a otro nivel</h2>
+    <p class="eventos-text">
+      Ya sea con uno de sus monólogos o con un guion específico adaptado para la ocasión,
+      Nacho García puede actuar en presentaciones de productos, charlas, entregas de premios,
+      cenas de empresa…
+    </p>
+    <div class="eventos-photos fade-in">
+      <img
+        src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/nacho_eventos05.jpg"
+        alt="Nacho García en evento"
+      />
+      <img
+        src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/nacho_eventos02.jpg"
+        alt="Nacho García en evento"
+      />
+      <img
+        src="https://www.nachogarciacomico.com/wp-content/uploads/2016/09/nacho_eventos02-1.jpg"
+        alt="Nacho García en evento"
+      />
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <span class="section-label">Contacto</span>
+    <h2 class="section-title">¿Hablamos?</h2>
+    <p>
+      Para contrataciones, actuaciones, eventos de empresa o cualquier consulta,
+      escríbenos y nos pondremos en contacto contigo lo antes posible.
+    </p>
+    <a href="mailto:contacto@nachogarciacomico.com" class="btn-primary">
+      Enviar mensaje
+    </a>
+    <div class="social-row">
+      <a href="https://www.facebook.com/nacho.garcia.comedian" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://twitter.com/NachoGarciaR" target="_blank" rel="noopener">Twitter / X</a>
+      <a href="https://www.instagram.com/nachogarciar/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/channel/UCEts1B6NXf-Xc_TmCCv6dow" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2024 Nacho García · Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCROLL ANIMATION -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
